@@ -1,6 +1,5 @@
-SAIO
+SAIO [![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)
 ----
-
 An extension module for PostgreSQL that implements join order search
 with Simulated Annealing.
 
