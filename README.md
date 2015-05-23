@@ -1,4 +1,4 @@
-SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)][![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)
+SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)[![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)
 ----
 An extension module for PostgreSQL that implements join order search
 with Simulated Annealing.
