@@ -2,7 +2,6 @@ load 'saio';
 
 set saio_moves_before_frozen to 1;
 set saio_initial_temperature_factor to 0.000001;
-set saio_algorithm TO recalc;
 
 explain select * from
 	tenk1 t1,
