@@ -13,9 +13,9 @@ geqo_params = [
 
 # (equilibrium_factor, initial_temperature, temperature_reduction_factor, steps_before_frozen)
 saio_params = [
-    (eq_factor, initial_temp, temp_reduction, 2)
-    for eq_factor in range(2, 13, 1)
-    for initial_temp in range(2, 4)
+    (eq_factor, 3, temp_reduction, 2)
+    for eq_factor in range(8, 14, 1)
+    #for initial_temp in range(2, 5)
     for temp_reduction in numpy.linspace(0.2, 0.9, 11)
 ]
 
@@ -31,14 +31,14 @@ saio_default_params = [
 ]
 
 
+# http://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-GEQO
 geqo_default_params = [
     (5, 0, 0, 2.0)
 ]
 
 
 # the other values will be calculated based on geqo_effort
-# http://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-GEQO
 geqo_default_params_effort = [
     (geqo_effort, 0, 0, 2.0 )
-    for effort in range(1, 10)
+    for geqo_effort in range(1, 11)
 ]
