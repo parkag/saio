@@ -117,8 +117,6 @@ def get_analyze_query2_left_join(n):
     print sql
     return sql
 
-#def get_analyze_query3(n):
-
 
 if __name__ == "__main__":
     import sys

@@ -14,7 +14,7 @@ geqo_params = [
 # (equilibrium_factor, initial_temperature, temperature_reduction_factor, steps_before_frozen)
 saio_params = [
     (eq_factor, 3, temp_reduction, 2)
-    for eq_factor in range(8, 14, 1)
+    for eq_factor in range(3, 12, 1)
     #for initial_temp in range(2, 5)
     for temp_reduction in numpy.linspace(0.2, 0.9, 11)
 ]
