@@ -2,6 +2,8 @@ EXTENSION    = saio
 EXTVERSION   = $(shell grep default_version $(EXTENSION).control | \
                sed -e "s/default_version[[:space:]]*=[[:space:]]*'\([^']*\)'/\1/")
 
+PG_CPPFLAGS  = -std=c99 -Wall
+SHLIB_LINK   = 
 DOCS         = $(wildcard doc/*.md)
 TESTS        = $(wildcard test/sql/*.sql)
 REGRESS      = $(patsubst test/sql/%.sql,%,$(TESTS))
@@ -44,6 +46,13 @@ ifeq ($(enable_dtrace), yes)
 	rm $@.tmp
 else
 	sed -f src/Gen_dummy_probes.sed $< >$@
+endif
+
+
+ifeq ($(enable_coverage),yes)
+PG_CPPFLAGS += --coverage
+SHLIB_LINK  += --coverage
+EXTRA_CLEAN += *.gcno
 endif
 
 PGXS := $(shell $(PG_CONFIG) --pgxs)
