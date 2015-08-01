@@ -13,33 +13,24 @@ CREATE TABLE table_2(
     col_1 TEXT,
     col_2 TEXT
 );
+INSERT INTO table_0 VALUES ('a', 'b');
+INSERT INTO table_0 VALUES ('c', 'd');
+INSERT INTO table_1 VALUES ('a', 'a', 'a');
+INSERT INTO table_1 VALUES ('b', 'b', 'b');
+INSERT INTO table_1 VALUES ('c', 'c', 'c');
+INSERT INTO table_1 VALUES ('d', 'd', 'd');
+INSERT INTO table_2 VALUES ('a', 'b', 'c');
+INSERT INTO table_2 VALUES ('b', 'c', 'd');
 LOAD 'saio';
 SET saio_threshold to 2;
-EXPLAIN (COSTS OFF) SELECT * FROM table_0
+SELECT * FROM table_0
 RIGHT JOIN table_1 ON (table_0.col_0 = table_1.col_1)
 RIGHT JOIN table_2 ON (table_0.col_0 = table_2.col_1)
-WHERE table_1.col_2 in (SELECT col_1 FROM table_2);
-                            QUERY PLAN                             
--------------------------------------------------------------------
- Merge Join
-   Merge Cond: (table_1.col_1 = table_0.col_0)
-   ->  Merge Join
-         Merge Cond: (table_1.col_1 = table_2.col_1)
-         ->  Sort
-               Sort Key: table_1.col_1
-               ->  Hash Join
-                     Hash Cond: (table_1.col_2 = table_2_1.col_1)
-                     ->  Seq Scan on table_1
-                     ->  Hash
-                           ->  HashAggregate
-                                 Group Key: table_2_1.col_1
-                                 ->  Seq Scan on table_2 table_2_1
-         ->  Sort
-               Sort Key: table_2.col_1
-               ->  Seq Scan on table_2
-   ->  Sort
-         Sort Key: table_0.col_0
-         ->  Seq Scan on table_0
-(19 rows)
+WHERE table_2.col_1 in (SELECT col_1 FROM table_1);
+ col_0 | col_1 | col_0 | col_1 | col_2 | col_0 | col_1 | col_2 
+-------+-------+-------+-------+-------+-------+-------+-------
+       |       |       |       |       | a     | b     | c
+ c     | d     | c     | c     | c     | b     | c     | d
+(2 rows)
 
-rollback;
+ROLLBACK;
