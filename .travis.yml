@@ -2,25 +2,30 @@ language: c
 
 before_install:
 - wget https://gist.github.com/petere/5893799/raw/apt.postgresql.org.sh
-- wget https://gist.github.com/petere/6023944/raw/pg-travis-test.sh
+- wget https://gist.githubusercontent.com/parkag/c7e2bef547b3f7bf0be3/raw/install-postgres-from-source.sh
+- wget https://gist.githubusercontent.com/parkag/d855d917fa6b51ca9e61/raw/test-postgres-extension.sh
 - sudo sh ./apt.postgresql.org.sh
+- bash ./install-postgres-from-source.sh
 
 env:
   global:
     - enable_coverage=yes
     - PG_PRELOAD=saio
   matrix:
-    - PGVERSION=9.0
-    - PGVERSION=9.1
-    - PGVERSION=9.2
-    - PGVERSION=9.3
-    - PGVERSION=9.4
+    - PGVERSION=9.0.0
+    - PGVERSION=9.1.0
+    - PGVERSION=9.2.0
+    - PGVERSION=9.3.0
+    - PGVERSION=9.4.0
 
 install:
     - sudo pip install cpp-coveralls
-
-script: bash ./pg-travis-test.sh
+    - ls -la
+script: bash ./test-postgres-extension.sh
 
 after_success:
-    - sudo chmod 666 *.gcda
-    - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
+    - sudo make coverage
+    - sudo cat lcov.info
+    - ls -la
+    - sudo chmod 777 src/* src
+    - coveralls --exclude lib --exclude test --exclude scripts --verbose --gcov-options '\-lp'
