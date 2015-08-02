@@ -1,7 +1,17 @@
+#unwanted compiler products
 *.o
 *.so
 *.pyc
 .deps
+
+#coverage products
+*.gcno
+*.gcda
+*.gcov
+lcov.info
+coverage/
+
+#other products
 saio.toc
 saio.aux
 saio.pdf
@@ -18,3 +28,7 @@ results/
 pgcon2010/saio-move-2.dot.pdf
 pgcon2010/saio-move-3.dot.pdf
 src/saio_probes.h
+doc/build/
+regression.out
+regression.diffs
+
