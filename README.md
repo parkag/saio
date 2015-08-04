@@ -1,4 +1,4 @@
-SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)[![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)[![Coverage Status](https://coveralls.io/repos/parkag/saio/badge.svg?branch=master&service=github)](https://coveralls.io/github/parkag/saio?branch=master)
+SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)[![Documentation Status](https://readthedocs.org/projects/saio/badge/?version=latest)](https://readthedocs.org/projects/saio/?badge=latest)[![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)[![Coverage Status](https://coveralls.io/repos/parkag/saio/badge.svg?branch=master&service=github)](https://coveralls.io/github/parkag/saio?branch=master)
 ----
 SAIO is a PGXN extension module for PostgreSQL that implements join order search
 with Simulated Annealing.
