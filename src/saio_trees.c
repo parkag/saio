@@ -270,29 +270,6 @@ copy_tree_structure(QueryTree *tree)
 }
 
 
-List *
-filter_leaves(List *trees)
-{
-	ListCell	*lc;
-	List		*res = NIL;
-
-	foreach(lc, trees)
-	{
-		QueryTree	*tree = (QueryTree *) lfirst(lc);
-
-		if (tree->left == NULL)
-		{
-			Assert(tree->right == NULL);
-			continue;
-		}
-
-		res = lappend(res, tree);
-	}
-
-	return res;
-}
-
-
 /* Swap two subtrees around. */
 
 void

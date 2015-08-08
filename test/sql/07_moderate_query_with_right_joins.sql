@@ -1,0 +1,116 @@
+BEGIN;
+CREATE TABLE table_0(
+    col_0 TEXT,
+    col_1 TEXT
+);
+CREATE TABLE table_1(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT
+);
+CREATE TABLE table_2(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT
+);
+CREATE TABLE table_3(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_4(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_5(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_6(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_7(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_8(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_9(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_10(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_11(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_12(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+CREATE TABLE table_13(
+    col_0 TEXT,
+    col_1 TEXT,
+    col_2 TEXT,
+    col_3 TEXT,
+    col_4 TEXT
+);
+
+LOAD 'saio';
+SET saio_threshold to 10;
+SET join_collapse_limit to 20;
+SET from_collapse_limit to 20;
+
+SELECT table_0.col_0 FROM table_0
+RIGHT JOIN table_1 ON (table_0.col_0 = table_1.col_1)
+RIGHT JOIN table_2 ON (table_1.col_0 = table_2.col_1)
+RIGHT JOIN table_3 ON (table_2.col_0 = table_3.col_2)
+RIGHT JOIN table_4 ON (table_1.col_1 = table_4.col_3)
+RIGHT JOIN table_5 ON (table_2.col_2 = table_5.col_4)
+RIGHT JOIN table_6 ON (table_5.col_3 = table_6.col_2)
+RIGHT JOIN table_7 ON (table_6.col_1 = table_7.col_0)
+RIGHT JOIN table_8 ON (table_7.col_2 = table_8.col_0)
+RIGHT JOIN table_9 ON (table_1.col_2 = table_9.col_0)
+RIGHT JOIN table_10 ON (table_4.col_1 = table_10.col_1)
+RIGHT JOIN table_11 ON (table_3.col_2 = table_11.col_2)
+RIGHT JOIN table_12 ON (table_2.col_2 = table_12.col_3)
+RIGHT JOIN table_13 ON (table_1.col_1 = table_13.col_4)
+WHERE table_13.col_1 = table_2.col_0;
+
+ROLLBACK;

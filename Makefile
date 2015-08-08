@@ -10,6 +10,7 @@ REGRESS      = $(patsubst test/sql/%.sql,%,$(TESTS))
 REGRESS_OPTS = --inputdir=test
 PG_CONFIG    = pg_config
 
+
 EXTRA_CLEAN = src/saio_probes.h
 
 MODULE_big = saio
@@ -18,6 +19,12 @@ OBJS = src/saio_main.o src/saio_util.o src/saio_trees.o \
 
 # make sure
 all: all-lib
+
+
+coverage:
+	lcov -d . -c -o lcov.info
+	genhtml --show-details --legend --output-directory=coverage --title=PostgreSQL --num-spaces=4 --prefix=./src/ `find . -name lcov.info -print`
+
 
 # check for DTrace support
 ifeq (,$(findstring --enable-dtrace,$(shell $(PG_CONFIG) --configure)))
@@ -49,10 +56,9 @@ else
 endif
 
 
-ifeq ($(enable_coverage),yes)
-PG_CPPFLAGS += --coverage
-SHLIB_LINK  += --coverage
-EXTRA_CLEAN += *.gcno
+OS := $(shell uname)
+ifeq ($(OS), Linux)
+SHLIB_LINK += -Wl,-Bsymbolic
 endif
 
 PGXS := $(shell $(PG_CONFIG) --pgxs)

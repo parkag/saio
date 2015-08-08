@@ -23,6 +23,7 @@ PG_MODULE_MAGIC;
 
 /* GUC variables */
 bool	enable_saio = false;
+int 	saio_threshold = 14;
 double	saio_seed = 0.0;
 int		saio_equilibrium_factor = 16;
 double	saio_initial_temperature_factor = 2.0;
@@ -36,7 +37,7 @@ static join_search_hook_type prev_join_search_hook = NULL;
 static RelOptInfo *
 saio_main(PlannerInfo *root, int levels_needed, List *initial_rels)
 {
-	if (enable_saio)
+	if (enable_saio && levels_needed >= saio_threshold)
 		return saio(root, levels_needed, initial_rels);
 	else if (enable_geqo && levels_needed >= geqo_threshold)
 		return geqo(root, levels_needed, initial_rels);
@@ -48,10 +49,17 @@ saio_main(PlannerInfo *root, int levels_needed, List *initial_rels)
 static void
 load_parameters()
 {
-	DefineCustomBoolVariable("saio", "Use SA for query planning.", NULL,
+	DefineCustomBoolVariable("saio",
+							 "Use SA for query planning.", NULL,
 							 &enable_saio, true,
 							 PGC_USERSET,
 							 0, SAIO_GUC_HOOK_VALUES);
+
+	DefineCustomIntVariable("saio_threshold",
+							"Sets the threshold of FROM items beyond which SAIO is used.", NULL,
+							&saio_threshold, 14, 1, INT_MAX,
+							PGC_USERSET,
+							0, SAIO_GUC_HOOK_VALUES);
 
 	DefineCustomRealVariable("saio_seed",
 							 "SA random seed.", NULL,

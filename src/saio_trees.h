@@ -22,7 +22,6 @@ void keep_minimum_state(PlannerInfo *root, QueryTree *tree, Cost new_cost);
 List *get_all_nodes(QueryTree *tree);
 List *get_parents(QueryTree *tree, bool reverse);
 List *get_siblings(QueryTree *tree);
-List *filter_leaves(List *trees);
 void swap_subtrees(QueryTree *tree1, QueryTree *tree2);
 
 
