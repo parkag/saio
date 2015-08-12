@@ -1,13 +1,13 @@
-SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)[![Build Status](https://travis-ci.org/parkag/saio.svg)](https://travis-ci.org/parkag/saio)[![Coverage Status](https://coveralls.io/repos/parkag/saio/badge.svg?branch=master&service=github)](https://coveralls.io/github/parkag/saio?branch=master)
+SAIO [![PGXN version](https://badge.fury.io/pg/saio.svg)](https://badge.fury.io/pg/saio)[![Build Status](https://travis-ci.org/parkag/saio.svg?branch=master)](https://travis-ci.org/parkag/saio)[![Coverage Status](https://coveralls.io/repos/parkag/saio/badge.svg?branch=master&service=github)](https://coveralls.io/github/parkag/saio?branch=master)
 ----
-SAIO is a PGXN extension module for PostgreSQL that implements join order search
+SAIO is a PGXN module for PostgreSQL that implements join order search
 with Simulated Annealing.
 
 The purpose of this module is to encourage attempts to build a non-exhaustive 
 join order optimizer better than GEQO. 
 
 Current [benchmarks](https://github.com/parkag/saio_benchmarks) show that 
-currently SAIO generates worse results than GEQO - the current non-exhaustive 
+SAIO generates worse results than GEQO - the non-exhaustive 
 join order optimizer included in PostgreSQL.
 
 * Open source: PostgreSQL License

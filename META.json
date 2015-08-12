@@ -2,9 +2,10 @@
    "name": "saio",
    "abstract": "A join order search plugin using simulated annealing.",
    "description": "Provides an experimental planner module that uses a randomised algorithm to try to find the optimal join order.",
-   "version": "0.0.2",
+   "version": "0.0.3",
    "maintainer": [
-      "Jan Urbański <wulczer@wulczer.org>"
+      "Jan Urbański <wulczer@wulczer.org>",
+      "Grzegorz Parka <grzegorz.parka@gmail.com>"
    ],
    "license": "postgresql",
    "provides": {
@@ -12,17 +13,17 @@
          "abstract": "A join order search module",
          "file": "src/saio_main.c",
          "docfile": "doc/saio.md",
-         "version": "0.0.1"
+         "version": "0.0.3"
       }
    },
    "release_status": "unstable",
    "resources": {
       "bugtracker": {
-         "web": "http://github.com/wulczer/saio/issues/"
+         "web": "http://github.com/parkag/saio/issues/"
       },
       "repository": {
-        "url":  "git://github.com/wulczer/saio.git",
-        "web":  "http://github.com/wulczer/saio/",
+        "url":  "git://github.com/parkag/saio.git",
+        "web":  "http://github.com/parkag/saio/",
         "type": "git"
       }
    },
